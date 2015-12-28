@@ -1,0 +1,6 @@
+#0 [""]
+#1 ["IA","UNH","1","PAORES","93","1"]
+#2 ["45","MSG","1"]
+#3 ["XYZCOMPANY AVAILABILITY","IFT","3"]
+#4 ["AMD","ERC","A7V","1"]
+Number of lines: 5

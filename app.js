@@ -19,14 +19,16 @@ MongoClient.connect('mongodb://localhost:27017/worddb', function(err, db) {
         if (err) {
             throw err;
         }
-        console.log(result);
+        console.log(result); // should be empty; there is nothing in the db
+        //db.close();
     });
+    console.log("Connected to server");
 });
 
 var app = express();
 ///*============================================
 app.get('/', function (req, res) {
-          res.send('Hello World!');
+          res.send('Hello World!asdfasdf');
 });
 
 var server = app.listen(3000, function () {
