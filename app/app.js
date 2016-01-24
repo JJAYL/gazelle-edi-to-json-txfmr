@@ -70,5 +70,7 @@ app.post('/translate', function(req, res){
                '<a href="/">Try again.</a>';
     console.log("documentedi \n"+ documentedi+ "\njson\n" +mydata);
     res.send(html);
+    parser.close();
+
 });
 
