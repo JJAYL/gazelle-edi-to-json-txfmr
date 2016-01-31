@@ -22,18 +22,49 @@ let components;
 let mydata = "{";
 
 
+var multer  =   require('multer');
+var app = express();
+var storage = multer.diskStorage({
+        destination: function (req, file, callback) {
+            callback(null, './uploads');
+        },
+        filename: function (req, file, callback) {
+            callback(null, file.fieldname + '-' + Date.now());
+        }
+    });
+var upload = multer({ storage : storage}).single('userPhoto');
+app.get('/',function(req,res){
+    res.sendFile(__dirname + "/index.html");
+    });
+    app.post('/api/photo',function(req,res){
+        upload(req,res,function(err) {
+        if(err) {
+            return res.end("Error uploading file.");
+        }
+        res.end("File is uploaded");
+    });
+});
+
+
+
+
+
+
+
 app.use(bodyParser());
 
 app.get('/', function (req, res) {
-    var html = '<form action = "translate" method = "post">' +
-               '<textarea name = "content" rows="50" cols="50">' +
-               '</textarea>' +
-               '<input type = "submit" value = "translate">' +
+    var html = '<form action="/pictures/upload" method="POST" enctype="multipart/form-data">'+
+               'Select an image to upload:'+
+               '<input type="file" name="image">'+ 
+               ' <input type="submit" value="Upload Image">'+
                '</form>';
     res.send(html);
 });
 
-
+app.get('/toto.txt', function(req, res){
+    res.send(req.body);
+})
 
 
 app.listen(3000, function () {
