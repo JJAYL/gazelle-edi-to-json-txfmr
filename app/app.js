@@ -7,7 +7,6 @@ var mongodb = require('mongodb');
 var assert = require('assert');
 var ObjectId = require('mongodb').ObjectID;
 var multer  =   require('multer');
-var url = 'mongodb://localhost:27017/test';
 var fs = require('fs');
 
 let edifact = require('../index.js');
@@ -24,18 +23,15 @@ let components;
 let mydata = "{";
 
 var MongoClient = mongodb.MongoClient;
-//var url = 'mongodb://localhost:27017/mydb';
+var url = 'mongodb://localhost:27017/mydb';
 var gfile;
 var storage = multer.diskStorage({
         destination: function (req, file, callback) {
             callback(null, './uploads');
         },
         filename: function (req, file, callback) {
-            //callback(null, file.fieldname + '-' + Date.now());
             gfile = file.fieldname+'-'+Date.now();
             callback(null, gfile);
-            //console.log("\n\nfile.fieldname = "+file.fieldname+ Date.now());
-
         }
     });
 var upload = multer({ storage : storage}).single('userPhoto');
