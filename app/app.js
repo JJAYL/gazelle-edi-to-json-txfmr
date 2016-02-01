@@ -93,9 +93,6 @@ app.post('/api/photo',function(req,res){
 
 
 app.use(bodyParser());
-app.get('/toto.txt', function(req, res){
-    res.send(req.body);
-})
 
 
 app.listen(3000, function () {
